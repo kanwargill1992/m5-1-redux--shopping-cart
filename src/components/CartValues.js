@@ -5,13 +5,13 @@ import { x } from "react-icons-kit/feather/";
 import { useDispatch } from "react-redux";
 // import removeItem from "../actions";
 
-const CartValues = () => {
+const CartValues = ({ storeItems }) => {
   const dispatch = useDispatch();
-
+  console.log("store", storeItems);
   return (
     <Wrapper>
       <HeadWrapper>
-        <Heading>Hello World</Heading>
+        <Heading>{storeItems.title}</Heading>
         <IconWrapper>
           <Btn>
             <Icon icon={x} size={40} />

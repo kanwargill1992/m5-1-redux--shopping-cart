@@ -7,15 +7,16 @@ import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
+  console.log("store", storeItems);
   return (
     <Wrapper>
       <HeadWrapper>
         <h1>Your Cart</h1>
-        <h4>1 Item</h4>
+        <Item>{storeItems.length}</Item>
       </HeadWrapper>
-      <Cartvalues />
+      <Cartvalues storeItems={storeItems} />
       <BtnWrapper>
-        <p>Total:$12.34</p>
+        <Total>Total:${storeItems.price}</Total>
         <Button style={{ width: 100 }}>Purchase</Button>
       </BtnWrapper>
     </Wrapper>
@@ -23,14 +24,15 @@ const Cart = () => {
 };
 
 const Wrapper = styled.div`
+  position: sticky;
   display: flex;
+  top: 0;
   flex-direction: column;
   background-color: #7f268e;
   color: #fff;
   justify-content: space-between;
   height: 100vh;
   width: 400px;
-  position: sticky;
 `;
 
 const HeadWrapper = styled.div`
@@ -43,5 +45,12 @@ const BtnWrapper = styled.div`
   justify-content: space-around;
   margin-bottom: 1rem;
 `;
+
+const Item = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const Total = styled.p``;
 
 export default Cart;
