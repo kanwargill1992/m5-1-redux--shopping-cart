@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Icon from "react-icons-kit";
 import { x } from "react-icons-kit/feather/";
 import { useDispatch } from "react-redux";
-// import removeItem from "../actions";
+import { removeItem } from "../actions";
 
 const CartValues = ({ storeItems }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const CartValues = ({ storeItems }) => {
       <HeadWrapper>
         <Heading>{storeItems.title}</Heading>
         <IconWrapper>
-          <Btn>
+          <Btn onClick={() => dispatch(removeItem(storeItems.id))}>
             <Icon icon={x} size={40} />
           </Btn>
         </IconWrapper>

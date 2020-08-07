@@ -12,7 +12,7 @@ export default function cartReducer(state = initailState, action) {
       };
     case "REMOVE_ITEM": {
       const newState = { ...state };
-      delete newState[action.item.id];
+      delete newState[action.itemId];
       return newState;
     }
 

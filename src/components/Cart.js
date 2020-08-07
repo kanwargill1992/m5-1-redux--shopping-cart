@@ -7,14 +7,18 @@ import { getStoreItemArray } from "../reducers";
 
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
-  console.log("store", storeItems);
   return (
     <Wrapper>
       <HeadWrapper>
         <h1>Your Cart</h1>
         <Item>{storeItems.length}</Item>
       </HeadWrapper>
-      <Cartvalues storeItems={storeItems} />
+      <StoreItemsList>
+        {storeItems.map((item) => (
+          <Cartvalues key={item.id} storeItems={item} />
+        ))}
+      </StoreItemsList>
+
       <BtnWrapper>
         <Total>Total:${storeItems.price}</Total>
         <Button style={{ width: 100 }}>Purchase</Button>
@@ -50,6 +54,8 @@ const Item = styled.span`
   font-size: 16px;
   font-weight: bold;
 `;
+
+const StoreItemsList = styled.ul``;
 
 const Total = styled.p``;
 
